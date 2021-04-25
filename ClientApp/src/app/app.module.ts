@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TopnavComponent } from './topnav/topnav.component';
 import { ContentComponent } from './content/content.component';
+import { AppRoutingModule } from './app-routing.module';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -15,13 +17,15 @@ import { ContentComponent } from './content/content.component';
     SidebarComponent,
     TopnavComponent,
     ContentComponent,
+    PostsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-    ])
+    ]),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
