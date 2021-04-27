@@ -14,9 +14,15 @@ export class PostsComponent implements OnInit {
   constructor(private data: StocksAPIService) { }
 
   ngOnInit() {
-    this.data.getPosts()
+    this.data.getList()
       .then(response => response.json())
-      .then(data => this.posts=data.marketSummaryAndSparkResponse.result);
+      .then(data => {
+        this.posts = data.items.result;
+        console.log(this.posts);
+      });
+    /*this.data.getPosts()
+      .then(response => response.json())
+      .then(data => this.posts=data.marketSummaryAndSparkResponse.result);*/
 
     /*this.data.getPosts()
       .then((response) => {
@@ -24,7 +30,6 @@ export class PostsComponent implements OnInit {
           .then((data) => {
             this.posts = data;
             console.log(this.posts);
-            //this.posts = Array.of(this.posts);
           });
       })
       .catch((err) => {
