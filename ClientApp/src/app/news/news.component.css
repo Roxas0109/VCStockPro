@@ -1,0 +1,12 @@
+.news-container {
+}
+.news-image-div {
+  float: left;
+  margin-right: 15px;
+}
+.news-image {
+    width: 120px;
+}
+.news-desc {
+    margin-left: 20px;
+}

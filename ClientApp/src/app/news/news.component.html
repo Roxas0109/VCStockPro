@@ -1,5 +1,13 @@
-<p>news works!</p>
-<div *ngFor="let new of news">
-  <h3>{{new.title}}</h3>
-  <a>{{new.link}}</a>
+<br />
+<div class="news-container" *ngFor="let new of news">
+  <div class="news-image-div">
+    <img class="news-image" src="{{new.main_image.original_url}}" />
+  </div>
+  <div class="news_desc">
+    <a href="{{new.link}}">
+      <h3>{{new.title}}</h3>
+    </a>
+    <p>{{new.summary}}</p>
+  </div>
+  <hr />
 </div>
