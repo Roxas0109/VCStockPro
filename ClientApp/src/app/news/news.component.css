@@ -1,0 +1,20 @@
+.news-container {
+  
+  //border-style: solid;
+  //border-width: 4px;
+}
+.news-image-div {
+  float: left;
+  margin-right: 15px;
+}
+.news-image {
+  width: 120px;
+  object-fit: contain;
+  //border-style: solid;
+  //border-width: 2px;
+  padding: 3px;
+  display: block;
+}
+.news-desc {
+    margin-left: 20px;
+}

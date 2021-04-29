@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Oswald&display=swap');
 /* The side navigation menu */
 .sidebar {
-  margin: 0;
-  padding: 0;
+  /*margin: 0;
+  padding: 0;*/
   width: 175px;
   background-color: #f1f1f1;
   position: fixed;
   height: 100%;
   overflow: auto;
   font-family: 'Dela Gothic One', cursive;
+  top: 81px;
 }
 
   /* Sidebar links */
