@@ -13,6 +13,7 @@ import { PostsComponent } from './posts/posts.component';
 import { HomeComponent } from './home/home.component';
 import { PopularComponent } from './popular/popular.component';
 import { NewsComponent } from './news/news.component';
+import { SearchbarComponent } from './searchbar/searchbar.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { NewsComponent } from './news/news.component';
     HomeComponent,
     PopularComponent,
     NewsComponent,
+    SearchbarComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
