@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { PopularComponent } from './popular/popular.component';
 import { NewsComponent } from './news/news.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
+import { SearchcontentComponent } from './searchcontent/searchcontent.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
     PopularComponent,
     NewsComponent,
     SearchbarComponent,
+    SearchcontentComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
