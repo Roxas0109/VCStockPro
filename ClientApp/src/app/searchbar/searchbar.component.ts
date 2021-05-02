@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from "../shared.service";
 
 @Component({
   selector: 'app-searchbar',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./searchbar.component.css']
 })
 export class SearchbarComponent implements OnInit {
+  currentVal = "";
 
-  constructor() { }
+  constructor(private sharedInput: SharedService) { }
 
   ngOnInit() {
+  }
+
+  setVal(val) {
+    this.sharedInput.setMessage(val);
   }
 
 }

@@ -12,9 +12,9 @@
 </div>-->
 
 <div class="wrapper">
-  <button class="search-icon" routerLink= "searchcontent/">
+  <button (click)="setVal(box.value)" class="search-icon" routerLink= "searchcontent/">
     <i class="fas fa-search"></i>
   </button>
-  <input class="search" placeholder="Search" type="text">
+  <input class="search" placeholder="Search" type="text" #box>
   <i class="fas fa-times-circle clear-icon"></i>
 </div> 
