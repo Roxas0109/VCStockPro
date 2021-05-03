@@ -1,0 +1,17 @@
+
+<div id="crypto-data-wrap">
+  <h1 id="crypto-header">Popular Crypto Currencies</h1>
+
+  <p *ngIf="!cryptoDatas"><em>Loading...</em></p>
+
+  <body>
+    <div id="crypto-data" *ngFor="let cryptoData of cryptoDatas">
+      <h3 class="crypto-name">{{cryptoData.summaryProfile.name}}</h3>
+      <p>{{cryptoData.summaryProfile.description}}</p>
+      <p><strong>Start Date:</strong> {{cryptoData.summaryProfile.startDate}}</p>
+      <p><strong>Current Price:</strong> ${{cryptoData.price.regularMarketPrice.fmt}}</p>
+      <p><strong>52-Week High:</strong> ${{cryptoData.summaryDetail.fiftyTwoWeekHigh.fmt}}</p>
+      <p><strong>52-Week Low:</strong> ${{cryptoData.summaryDetail.fiftyTwoWeekLow.fmt}}</p>
+    </div>
+  </body>
+</div>
