@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { ChartModule } from 'angular2-chartjs';
 
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -35,7 +36,8 @@ import { SearchcontentComponent } from './searchcontent/searchcontent.component'
     FormsModule,
     RouterModule.forRoot([
     ]),
-    AppRoutingModule
+    AppRoutingModule,
+    ChartModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

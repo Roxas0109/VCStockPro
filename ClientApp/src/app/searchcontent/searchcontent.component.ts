@@ -10,6 +10,17 @@ import { StocksAPIService } from '../stocks-api.service';
 export class SearchcontentComponent implements OnInit {
   receivedMessage: string;
 
+  type = 'line';
+  data = {
+    labels: [],
+    datasets: [{ label: "Low", data: [], backgroundColor: ['red'] }, { label: "High", data: [], backgroundColor: ['green'] }],
+
+  };
+  options = {
+    responsive: true,
+    maintainAspectRatio: true
+  };
+
   constructor(
     private sharedInput: SharedService,
     private sData: StocksAPIService,
@@ -17,11 +28,10 @@ export class SearchcontentComponent implements OnInit {
 
   ngOnInit() {
     this.receivedMessage = this.sharedInput.getMessage();
-    this.sData.getChart()
+    this.sData.getChart(this.receivedMessage)
       .then((response) => {
         response.json()
           .then((data) => {
-            //this.charts = data.chart.result;
             let high = data.chart.result[0].indicators.quote[0].high;
             let low = data.chart.result[0].indicators.quote[0].low;
             let timeStamp = data.chart.result[0].timestamp;
@@ -30,17 +40,22 @@ export class SearchcontentComponent implements OnInit {
               let jsdate = new Date(data * 1000);
               stockDates.push(jsdate.toLocaleTimeString('en', { year: 'numeric', month: 'short', day: 'numeric' }));
             });
-
-            //console.log(this.charts);
-            console.log(high);
+            this.data.labels = stockDates;
+            this.data.datasets[0].data = low;
+            this.data.datasets[1].data = high;
+            console.log(data);
+            /*console.log(high);
             console.log(low);
             console.log(timeStamp);
-            console.log(stockDates);
+            console.log(stockDates);*/
+
           });
       })
       .catch((err) => {
-        console.log('Error geenrted: ${err}');
+        console.log('Error generated: ${err}');
       });
   }
+
+
 
 }
