@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from "../shared.service";
+import { StocksAPIService } from '../stocks-api.service';
 
 @Component({
   selector: 'app-searchbar',

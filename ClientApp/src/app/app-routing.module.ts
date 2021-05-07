@@ -7,6 +7,7 @@ import { PostsComponent } from './posts/posts.component';
 import { SearchcontentComponent } from './searchcontent/searchcontent.component';
 
 const routes: Routes = [
+  { path: '', redirectTo:'home', pathMatch:'full' },
   { path: 'posts', component: PostsComponent },
   { path: 'home', component: HomeComponent },
   { path: 'popular', component: PopularComponent },

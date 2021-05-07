@@ -9,6 +9,8 @@ import { StocksAPIService } from '../stocks-api.service';
 })
 export class SearchcontentComponent implements OnInit {
   receivedMessage: string;
+  shortName: string;
+  symbol: string;
 
   type = 'line';
   data = {
@@ -28,6 +30,29 @@ export class SearchcontentComponent implements OnInit {
 
   ngOnInit() {
     this.receivedMessage = this.sharedInput.getMessage();
+    console.log(this.receivedMessage);
+    this.getProfile();
+    
+  }
+
+  getProfile() {
+    this.sData.getProfile(this.receivedMessage)
+      .then((response) => {
+        response.json()
+          .then((data) => {
+            console.log(data);
+            this.shortName = data.quoteType.shortName;
+            this.symbol = data.symbol;
+            console.log(this.shortName);
+            console.log(this.symbol);
+          });
+      })
+      .catch((err) => {
+        console.log('Error generated: ${err}');
+      });
+  }
+
+  getChart() {
     this.sData.getChart(this.receivedMessage)
       .then((response) => {
         response.json()
@@ -43,12 +68,19 @@ export class SearchcontentComponent implements OnInit {
             this.data.labels = stockDates;
             this.data.datasets[0].data = low;
             this.data.datasets[1].data = high;
-            console.log(data);
-            /*console.log(high);
-            console.log(low);
-            console.log(timeStamp);
-            console.log(stockDates);*/
+          });
+      })
+      .catch((err) => {
+        console.log('Error generated: ${err}');
+      });
+  }
 
+  getAutoComplete(val) {
+    this.sData.getAutoComplete(val)
+      .then((response) => {
+        response.json()
+          .then((data) => {
+            console.log(data.quotes[0].symbol);
           });
       })
       .catch((err) => {
