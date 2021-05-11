@@ -8,7 +8,7 @@ import { StocksAPIService } from '../stocks-api.service';
   styleUrls: ['./searchbar.component.css']
 }) 
 export class SearchbarComponent implements OnInit {
-
+  stocks = ["apple", "tesla", "microsoft"];
   constructor(private sharedInput: SharedService) { }
 
   ngOnInit() {
