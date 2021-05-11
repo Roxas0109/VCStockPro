@@ -31,11 +31,12 @@ export class SearchcontentComponent implements OnInit {
   type = 'line';
   data = {
     labels: [],
-    datasets: [{ label: "Low", data: [], backgroundColor: ['red'] }, { label: "High", data: [], backgroundColor: ['green'] }],
+    datasets: [{ label: "Low", data: [], backgroundColor: ['#ff6769'] }, { label: "High", data: [], backgroundColor: ['#8aff98'] }],
 
   };
   options = {
     responsive: true,
+
   };
 
   constructor(
@@ -92,14 +93,17 @@ export class SearchcontentComponent implements OnInit {
       .then((response) => {
         response.json()
           .then((data) => {
+            //set high, low, and timestamps
             this.high = data.chart.result[0].indicators.quote[0].high;
             this.low = data.chart.result[0].indicators.quote[0].low;
             let timeStamp = data.chart.result[0].timestamp;
             this.stockDates = [];
+            //convert timestamps
             timeStamp.forEach((data) => {
               let jsdate = new Date(data * 1000);
               this.stockDates.push(jsdate.toLocaleTimeString('en', { year: 'numeric', month: 'short', day: 'numeric' }));
             });
+            //set values for chart
             this.data.labels = this.stockDates;
             this.data.datasets[0].data = this.low;
             this.data.datasets[1].data = this.high;
