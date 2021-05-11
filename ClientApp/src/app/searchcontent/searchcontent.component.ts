@@ -27,12 +27,17 @@ export class SearchcontentComponent implements OnInit {
     private sharedInput: SharedService,
     private sData: StocksAPIService,
   ) { }
-
+  
   ngOnInit() {
-    this.receivedMessage = this.sharedInput.getMessage();
+    this.getAutoComplete(this.sharedInput.getMessage());
+    setTimeout(() => this.initEverything(), 1000);
+
+    
+  }
+
+  initEverything() {
     console.log(this.receivedMessage);
     this.getProfile();
-    
   }
 
   getProfile() {
@@ -40,11 +45,10 @@ export class SearchcontentComponent implements OnInit {
       .then((response) => {
         response.json()
           .then((data) => {
-            console.log(data);
             this.shortName = data.quoteType.shortName;
             this.symbol = data.symbol;
-            console.log(this.shortName);
-            console.log(this.symbol);
+            //console.log(this.shortName);
+            //console.log(this.symbol);
           });
       })
       .catch((err) => {
@@ -80,7 +84,8 @@ export class SearchcontentComponent implements OnInit {
       .then((response) => {
         response.json()
           .then((data) => {
-            console.log(data.quotes[0].symbol);
+            //console.log(data.quotes[0].symbol);
+            this.receivedMessage = data.quotes[0].symbol;
           });
       })
       .catch((err) => {
