@@ -157,6 +157,7 @@ export class SearchcontentComponent implements OnInit {
     this.data.labels = this.stockDates;
     this.data.datasets[0].data = this.low;
     this.data.datasets[1].data = this.high;
+    // testing purposes: console.log(this.sharedInput.getMessage());
   }
 
 

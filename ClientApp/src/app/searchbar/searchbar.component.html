@@ -1,14 +1,16 @@
 <div class="wrapper">
-  <button (click)="setVal(box.value)" class="search-icon" routerLink= "searchcontent/" id="myBtn">
-    <i class="fas fa-search"></i>
-  </button>
-  <input class="search" placeholder="Search" (click)="toggleDropDown()" type="text" #box>
-  <!--<i class="fas fa-times-circle clear-icon"></i>-->
+  <!--begin form-->
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <button type="submit" [disabled]="!searchForm.valid" class="search-icon">
+      <i class="fas fa-search"></i>
+    </button>
+    <input class="search" placeholder="Search a stock" (click)="toggleDropDown()" type="text" formControlName="searchInput" required>
+  </form>
+  <!--icon for later use: <i class="fas fa-times-circle clear-icon"></i>-->
+  <!--begin drop down-->
   <div class="dropContainer" *ngIf="showDropDown">
-    <div>
-      <div class="list" *ngFor="let s of stocks">
-        {{s}}
+      <div class="list" *ngFor="let listItem of stocks" (click)="selectVal(listItem)">
+        {{listItem}}
       </div>
-    </div>
   </div>
 </div>
