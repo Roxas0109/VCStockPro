@@ -9,6 +9,8 @@ import { StocksAPIService } from '../stocks-api.service';
 }) 
 export class SearchbarComponent implements OnInit {
   stocks = ["apple", "tesla", "microsoft"];
+  showDropDown = false;
+
   constructor(private sharedInput: SharedService) { }
 
   ngOnInit() {
@@ -26,6 +28,10 @@ export class SearchbarComponent implements OnInit {
 
   setVal(val) {
     this.sharedInput.setMessage(val);
+  }
+
+  toggleDropDown() {
+    this.showDropDown = !this.showDropDown;
   }
 
 }

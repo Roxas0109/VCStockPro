@@ -10,9 +10,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { TopnavComponent } from './topnav/topnav.component';
 import { ContentComponent } from './content/content.component';
 import { AppRoutingModule } from './app-routing.module';
-import { PostsComponent } from './posts/posts.component';
 import { HomeComponent } from './home/home.component';
-import { PopularComponent } from './popular/popular.component';
 import { NewsComponent } from './news/news.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { SearchcontentComponent } from './searchcontent/searchcontent.component';
@@ -23,9 +21,7 @@ import { SearchcontentComponent } from './searchcontent/searchcontent.component'
     SidebarComponent,
     TopnavComponent,
     ContentComponent,
-    PostsComponent,
     HomeComponent,
-    PopularComponent,
     NewsComponent,
     SearchbarComponent,
     SearchcontentComponent,

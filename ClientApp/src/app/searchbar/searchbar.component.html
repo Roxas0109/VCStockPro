@@ -2,11 +2,13 @@
   <button (click)="setVal(box.value)" class="search-icon" routerLink= "searchcontent/" id="myBtn">
     <i class="fas fa-search"></i>
   </button>
-  <input class="search" placeholder="Search" type="text" #box>
+  <input class="search" placeholder="Search" (click)="toggleDropDown()" type="text" #box>
   <!--<i class="fas fa-times-circle clear-icon"></i>-->
-  <div class="dropContainer">
-    <div *ngFor="let s of stocks">
-      {{s}}
+  <div class="dropContainer" *ngIf="showDropDown">
+    <div>
+      <div class="list" *ngFor="let s of stocks">
+        {{s}}
+      </div>
     </div>
   </div>
 </div>

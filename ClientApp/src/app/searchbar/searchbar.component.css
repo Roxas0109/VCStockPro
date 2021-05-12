@@ -46,6 +46,15 @@
     height:200px;
     background:#F6F6F6;
     top:30px;
-    overflow:auto;
+    overflow-y:auto;
+}
 
+.list {
+  padding: 10px;
+  font-family: 'Oswald', sans-serif;
+}
+
+.list:hover {
+  background-color: #555;
+  color: white;
 }
