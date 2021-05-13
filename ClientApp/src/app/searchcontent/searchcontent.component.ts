@@ -8,10 +8,12 @@ import { StocksAPIService } from '../stocks-api.service';
   styleUrls: ['./searchcontent.component.css']
 })
 export class SearchcontentComponent implements OnInit {
+  //var for passed value
   receivedMessage: string;
+
+  //var for key data
   shortName: string;
   symbol: string;
-  //var for key data
   open: string;
   dHigh: string;
   dLow: string;
@@ -20,24 +22,19 @@ export class SearchcontentComponent implements OnInit {
   f2High: string;
   f2Low: string;
   beta: string;
-  ask: string;
+  regMPrice: string;
   exchangeName: string;
   mCap: string;
-  //var for chart
+
+  //var values for chart
   high: any;
   low: any;
   stockDates: any;
 
-  type = 'line';
-  data = {
-    labels: [],
-    datasets: [{ label: "Low", data: [], backgroundColor: ['#ff6769'] }, { label: "High", data: [], backgroundColor: ['#8aff98'] }],
-
-  };
-  options = {
-    responsive: true,
-
-  };
+  //actual chart var
+  type: any;
+  data: any;
+  options: any;
 
   constructor(
     private sharedInput: SharedService,
@@ -45,19 +42,19 @@ export class SearchcontentComponent implements OnInit {
   ) { }
   
   ngOnInit() {
-    this.forCSS();
-    //this.getAutoComplete(this.sharedInput.getMessage());
-    //setTimeout(() => this.initEverything(), 1000);
-
+    //this.forCSS(); //to test without api call
+    //setTimeout(() => this.initEverything(), 1000); old call when received message wouldnt be set in time
+    this.receivedMessage = this.sharedInput.getMessage(); //set received message from previous component
+    this.initEverything(); //api calls
     
   }
 
   initEverything() {
-    //console.log(this.receivedMessage);
     this.getProfile();
     this.getChart();
   }
 
+  //api call for key details
   getProfile() {
     this.sData.getProfile(this.receivedMessage)
       .then((response) => {
@@ -75,11 +72,10 @@ export class SearchcontentComponent implements OnInit {
             this.f2High = data.summaryDetail.fiftyTwoWeekHigh.fmt;
             this.f2Low = data.summaryDetail.fiftyTwoWeekLow.fmt;
             this.beta = data.summaryDetail.beta.fmt;
-            this.ask = data.summaryDetail.ask.fmt;
+            this.regMPrice = data.price.regularMarketPrice.fmt;
             this.exchangeName = data.price.exchangeName;
             this.mCap = data.summaryDetail.marketCap.longFmt;
-            //console.log(this.shortName);
-            //console.log(this.symbol);
+            
             console.log(data);
           });
       })
@@ -88,6 +84,7 @@ export class SearchcontentComponent implements OnInit {
       });
   }
 
+  //api call to get chart values
   getChart() {
     this.sData.getChart(this.receivedMessage)
       .then((response) => {
@@ -103,10 +100,9 @@ export class SearchcontentComponent implements OnInit {
               let jsdate = new Date(data * 1000);
               this.stockDates.push(jsdate.toLocaleTimeString('en', { year: 'numeric', month: 'short', day: 'numeric' }));
             });
-            //set values for chart
-            this.data.labels = this.stockDates;
-            this.data.datasets[0].data = this.low;
-            this.data.datasets[1].data = this.high;
+            //init chart
+            this.initChart();
+      
             console.log(data);
           });
       })
@@ -115,20 +111,25 @@ export class SearchcontentComponent implements OnInit {
       });
   }
 
-  getAutoComplete(val) {
-    this.sData.getAutoComplete(val)
-      .then((response) => {
-        response.json()
-          .then((data) => {
-            //console.log(data.quotes[0].symbol);
-            this.receivedMessage = data.quotes[0].symbol;
-          });
-      })
-      .catch((err) => {
-        console.log('Error generated: ${err}');
-      });
+  //init chart once values needed are set
+  initChart() {
+    this.type = 'line';
+    this.data = {
+      labels: this.stockDates,
+      datasets: [{ label: "Low", data: this.low, backgroundColor: ['#ff6769'] }, { label: "High", data: this.high, backgroundColor: ['#8aff98'] }],
+
+    };
+    this.options = {
+      responsive: true,
+      title: {
+        display: true,
+        text: '1D',
+      },
+      
+    };
   }
 
+  //function call to save api calls
   forCSS() {
     //title var
     this.shortName = "Short Name";
@@ -142,7 +143,7 @@ export class SearchcontentComponent implements OnInit {
     this.f2High = "test";
     this.f2Low = "test";
     this.beta = "test";
-    this.ask = "test";
+    this.regMPrice = "test";
     this.exchangeName = "test";
     this.mCap = "test";
     //chart var
@@ -154,11 +155,25 @@ export class SearchcontentComponent implements OnInit {
       let jsdate = new Date(data * 1000);
       this.stockDates.push(jsdate.toLocaleTimeString('en', { year: 'numeric', month: 'short', day: 'numeric' }));
     });
-    this.data.labels = this.stockDates;
-    this.data.datasets[0].data = this.low;
-    this.data.datasets[1].data = this.high;
-    // testing purposes: console.log(this.sharedInput.getMessage());
+    //init chart
+    this.initChart();
+    console.log(this.sharedInput.getMessage());
   }
+
+  /* old api call before drop down delete?
+   getAutoComplete(val) {
+    this.sData.getAutoComplete(val)
+      .then((response) => {
+        response.json()
+          .then((data) => {
+            //console.log(data.quotes[0].symbol);
+            this.receivedMessage = data.quotes[0].symbol;
+          });
+      })
+      .catch((err) => {
+        console.log('Error generated: ${err}');
+      });
+  }*/
 
 
 
