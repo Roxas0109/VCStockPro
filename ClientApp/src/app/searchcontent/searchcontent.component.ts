@@ -43,7 +43,6 @@ export class SearchcontentComponent implements OnInit {
   
   ngOnInit() {
     //this.forCSS(); //to test without api call
-    //setTimeout(() => this.initEverything(), 1000); old call when received message wouldnt be set in time
     this.receivedMessage = this.sharedInput.getMessage(); //set received message from previous component
     this.initEverything(); //api calls
     
@@ -60,10 +59,10 @@ export class SearchcontentComponent implements OnInit {
       .then((response) => {
         response.json()
           .then((data) => {
-            //title var
+            //set title var
             this.shortName = data.quoteType.shortName;
             this.symbol = data.symbol;
-            //key data
+            //set key data
             this.open = data.summaryDetail.open.fmt;
             this.dHigh = data.summaryDetail.dayHigh.fmt;
             this.dLow = data.summaryDetail.dayLow.fmt;
@@ -75,8 +74,7 @@ export class SearchcontentComponent implements OnInit {
             this.regMPrice = data.price.regularMarketPrice.fmt;
             this.exchangeName = data.price.exchangeName;
             this.mCap = data.summaryDetail.marketCap.longFmt;
-            
-            console.log(data);
+           
           });
       })
       .catch((err) => {
@@ -102,8 +100,6 @@ export class SearchcontentComponent implements OnInit {
             });
             //init chart
             this.initChart();
-      
-            console.log(data);
           });
       })
       .catch((err) => {
@@ -129,7 +125,7 @@ export class SearchcontentComponent implements OnInit {
     };
   }
 
-  //function call to save api calls
+  //function call to save api calls when testing component
   forCSS() {
     //title var
     this.shortName = "Short Name";
@@ -159,22 +155,5 @@ export class SearchcontentComponent implements OnInit {
     this.initChart();
     console.log(this.sharedInput.getMessage());
   }
-
-  /* old api call before drop down delete?
-   getAutoComplete(val) {
-    this.sData.getAutoComplete(val)
-      .then((response) => {
-        response.json()
-          .then((data) => {
-            //console.log(data.quotes[0].symbol);
-            this.receivedMessage = data.quotes[0].symbol;
-          });
-      })
-      .catch((err) => {
-        console.log('Error generated: ${err}');
-      });
-  }*/
-
-
 
 }

@@ -45,11 +45,23 @@ export class SearchbarComponent implements OnInit {
 
   //when form is submitted
   onSubmit() {
+    //check input value if it has parenthesis to indicate an option from drop down was selected
+    if (!((this.searchForm.value.searchInput).includes('(') && (this.searchForm.value.searchInput).includes(')'))) {
+      this.getAutoCompleteV2(this.searchForm.value.searchInput);
+      setTimeout(() => this.navToContent(), 2000);
+    }
+    else {
+      this.navToContent();
+    }
+    this.showDropDown = false;
+  }
+
+  //travel to next component
+  navToContent() {
     //refresh component when searching again
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/searchcontent']);
     });
-    this.showDropDown = false;
   }
 
   //toggle drop down
@@ -75,13 +87,28 @@ export class SearchbarComponent implements OnInit {
       .then((response) => {
         response.json()
           .then((data) => {
-            console.log(data.quotes);
+            //set all quotes that match search
             this.stocks = data.quotes;
           });
       })
       .catch((err) => {
         console.log('Error generated: ${err}');
       });
+  }
+
+  //api call for when drop down item isn't selected
+  getAutoCompleteV2(val) {
+  this.sData.getAutoComplete(val)
+    .then((response) => {
+      response.json()
+        .then((data) => {
+          //set first item from auto complete
+          this.sharedInput.setMessage(data.quotes[0].symbol);
+        });
+    })
+    .catch((err) => {
+      console.log('Error generated: ${err}');
+    });
   }
 
 }
