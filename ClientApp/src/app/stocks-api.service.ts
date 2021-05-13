@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class StocksAPIService {
   key: string;
   constructor(private http: HttpClient) {
-    this.key = "8df54beca8msh26e6b19580be7e7p18231ejsn15b5f80d11fa";
+    this.key = "3299feba69msh9b7492b9072e217p1df24cjsn8e152f91b053";
   }
 
   getPosts() {
