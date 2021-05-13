@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./searchbar.component.css']
 }) 
 export class SearchbarComponent implements OnInit {
+
   stocks = ["apple", "tesla", "microsoft"];
   showDropDown = false;
   searchForm = new FormGroup({
@@ -29,8 +30,12 @@ export class SearchbarComponent implements OnInit {
     });
   }
 
-  toggleDropDown() {
-    this.showDropDown = !this.showDropDown;
+  openDropDown() {
+    this.showDropDown = true;
+  }
+
+  clearInput() {
+    this.searchForm.patchValue({ searchInput: "" });
   }
 
   selectVal(val) {
