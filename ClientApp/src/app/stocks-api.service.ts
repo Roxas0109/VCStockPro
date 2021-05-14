@@ -21,7 +21,7 @@ export class StocksAPIService {
   }
 
   getChart(stock) {
-    return fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=5m&symbol="+stock+"&range=1d&region=US", {
+    return fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=5m&symbol=" + stock + "&range=1d&region=US", {
       "method": "GET",
       "headers": {
         "x-rapidapi-key": this.key,
@@ -41,7 +41,7 @@ export class StocksAPIService {
   }
 
   getAutoComplete(stock) {
-    return fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/auto-complete?q="+stock+"&region=US", {
+    return fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/auto-complete?q=" + stock + "&region=US", {
       "method": "GET",
       "headers": {
         "x-rapidapi-key": this.key,
@@ -49,7 +49,7 @@ export class StocksAPIService {
       }
     });
   }
-  
+
   getStockBySymbol(symbol: string) {
     return fetch(`https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-summary?symbol=${symbol}&region=US`, {
       "method": "GET",
@@ -59,3 +59,4 @@ export class StocksAPIService {
       }
     });
   }
+}
