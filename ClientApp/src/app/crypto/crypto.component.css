@@ -1,0 +1,16 @@
+#crypto-data-wrap {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 50px;
+  overflow: hidden;
+}
+
+#crypto-header {
+  text-align: center;
+}
+
+#crypto-data{
+    margin-top:40px;
+}
+
+

@@ -12,9 +12,12 @@ import { ContentComponent } from './content/content.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NewsComponent } from './news/news.component';
+import { CryptoComponent } from './crypto/crypto.component';
+import { MetalsComponent } from './Metals/metals.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { SearchcontentComponent } from './searchcontent/searchcontent.component';
 import { ClickOutsideDirective } from './click-outside.directive';
+
 
 @NgModule({
   declarations: [
@@ -27,6 +30,8 @@ import { ClickOutsideDirective } from './click-outside.directive';
     SearchbarComponent,
     SearchcontentComponent,
     ClickOutsideDirective,
+    CryptoComponent,
+    MetalsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

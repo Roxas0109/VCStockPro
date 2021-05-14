@@ -10,16 +10,6 @@ export class StocksAPIService {
     this.key = "3299feba69msh9b7492b9072e217p1df24cjsn8e152f91b053";
   }
 
-  getPosts() {
-    return fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-summary?region=US", {
-      "method": "GET",
-      "headers": {
-        "x-rapidapi-key": this.key,
-        "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
-      }
-    });
-  }
-
   getList() {
     return fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/news/list?category=generalnews&region=US", {
       "method": "GET",
@@ -59,4 +49,13 @@ export class StocksAPIService {
       }
     });
   }
-}
+  
+  getStockBySymbol(symbol: string) {
+    return fetch(`https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-summary?symbol=${symbol}&region=US`, {
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-key": this.key,
+        "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
+      }
+    });
+  }
