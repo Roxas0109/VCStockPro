@@ -21,6 +21,7 @@ export class CryptoComponent implements OnInit {
           response.json()
             .then((datas) => {
               cryptoArray.push(datas);
+              console.log(datas);
               console.log(cryptoArray[i]);
             });
         });
