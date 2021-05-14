@@ -2,10 +2,11 @@
 <h1 *ngIf="showCharts">Saved Quotes</h1>
 <div class="chartContainer" *ngIf="showCharts">
   <div class="listChart" *ngFor="let ch of charts">
-    <button [ngClass]="removeBtn" (click)="removeQuote(ch.symbol)">
+    <h2>{{ch.shortName}} ({{ch.symbol}})</h2>
+    <h3>{{ch.regMPrice}}</h3>
+    <button class="removeBtn" (click)="removeQuote(ch.symbol)">
       <i class="fas fa-minus"></i> Remove
     </button>
-    <h2>{{ch.symbol}}</h2>
     <chart [type]="ch.type" [data]="ch.data" [options]="ch.options"></chart>
   </div>
 

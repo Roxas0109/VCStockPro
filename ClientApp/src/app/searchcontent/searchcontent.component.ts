@@ -49,9 +49,9 @@ export class SearchcontentComponent implements OnInit {
   ) { }
   
   ngOnInit() {
-    this.forCSS(); //to test without api call
+    //this.forCSS(); //to test without api call
     this.receivedMessage = this.sharedInput.getMessage(); //set received message from previous component
-    //this.initEverything(); //api calls
+    this.initEverything(); //api calls
     
   }
 
@@ -132,6 +132,7 @@ export class SearchcontentComponent implements OnInit {
     };
   }
 
+  //func to add chart to home
   addHome() {
     if (!this.btnPressed) {
       console.log("button pressed");
@@ -144,13 +145,17 @@ export class SearchcontentComponent implements OnInit {
       console.log("unpressed");
       this.btnText = "Add to Home";
       this.addBtn = "addBtn";
+      this.sharedInput.removeChart(this.symbol);
       this.btnPressed = false;
     }
   }
 
+  //set chart in service
   setChart() {
     this.passedChart = {
       symbol: this.symbol,
+      shortName: this.shortName,
+      regMPrice: this.regMPrice,
       type: this.type,
       data: this.data,
       options: this.options,

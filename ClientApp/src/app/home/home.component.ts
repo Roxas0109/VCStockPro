@@ -11,15 +11,13 @@ export class HomeComponent implements OnInit {
   showCharts = false;
   charts: any;
 
-  //button
-  removeBtn = "removeBtn";
-
   constructor(private sharedInput: SharedService) { }
 
   ngOnInit() {
     this.checkIfAvailable();
   }
 
+  //check if there are any charts to display
   checkIfAvailable() {
     this.charts = this.sharedInput.getChart();
     if (this.charts === undefined || this.charts.length == 0) {
@@ -30,7 +28,9 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  //removing chart when button is pressed
   removeQuote(symbol) {
-
+    this.charts = this.sharedInput.removeChart(symbol);
+    this.checkIfAvailable();
   }
 }

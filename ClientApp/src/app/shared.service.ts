@@ -19,6 +19,7 @@ export class SharedService {
   }
 
   setChart(ch) {
+    this.charts=this.removeChart(ch.symbol);
     this.charts.push(ch);
   }
 
@@ -27,11 +28,6 @@ export class SharedService {
   }
 
   removeChart(symbol) {
-    /*for (var i = 0; i < this.charts.length; i++) {
-      if ((this.charts[i].symbol).includes(symbol)) {
-        this.charts.splice(i, 1);
-      }
-    }*/
     const result = this.charts.filter(item => item.symbol != symbol);
     this.charts = result;
     return this.charts;
