@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { PopularComponent } from './popular/popular.component';
 import { NewsComponent } from './news/news.component';
 import { CryptoComponent } from './crypto/crypto.component';
+import { MetalsComponent } from './Metals/metals.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CryptoComponent } from './crypto/crypto.component';
     HomeComponent,
     PopularComponent,
     NewsComponent,
-    CryptoComponent
+    CryptoComponent,
+    MetalsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

@@ -1,0 +1,14 @@
+#metals-data-wrap {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 50px;
+  overflow: hidden;
+}
+
+#metals-header {
+  text-align: center;
+}
+
+#metals-data {
+  margin-top: 40px;
+}
