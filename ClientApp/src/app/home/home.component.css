@@ -1,0 +1,22 @@
+.removeBtn {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Oswald', sans-serif;
+}
+
+.removeBtnActive {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Oswald', sans-serif;
+}
+
+.removeBtn:hover {
+  background-color: #555;
+  color: white;
+}

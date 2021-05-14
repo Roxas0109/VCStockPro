@@ -10,6 +10,13 @@ import { StocksAPIService } from '../stocks-api.service';
 export class SearchcontentComponent implements OnInit {
   //var for passed value
   receivedMessage: string;
+  passedChart: any;
+  
+
+  //var for button text
+  btnText = "Add to Home";
+  btnPressed = false;
+  addBtn = "addBtn";
 
   //var for key data
   shortName: string;
@@ -42,9 +49,9 @@ export class SearchcontentComponent implements OnInit {
   ) { }
   
   ngOnInit() {
-    //this.forCSS(); //to test without api call
+    this.forCSS(); //to test without api call
     this.receivedMessage = this.sharedInput.getMessage(); //set received message from previous component
-    this.initEverything(); //api calls
+    //this.initEverything(); //api calls
     
   }
 
@@ -125,6 +132,33 @@ export class SearchcontentComponent implements OnInit {
     };
   }
 
+  addHome() {
+    if (!this.btnPressed) {
+      console.log("button pressed");
+      this.btnText = "Added!";
+      this.addBtn = "addBtnActive";
+      this.setChart();
+      this.btnPressed = true;
+    }
+    else {
+      console.log("unpressed");
+      this.btnText = "Add to Home";
+      this.addBtn = "addBtn";
+      this.btnPressed = false;
+    }
+  }
+
+  setChart() {
+    this.passedChart = {
+      symbol: this.symbol,
+      type: this.type,
+      data: this.data,
+      options: this.options,
+
+    }
+    this.sharedInput.setChart(this.passedChart);
+}
+
   //function call to save api calls when testing component
   forCSS() {
     //title var
@@ -151,6 +185,7 @@ export class SearchcontentComponent implements OnInit {
       let jsdate = new Date(data * 1000);
       this.stockDates.push(jsdate.toLocaleTimeString('en', { year: 'numeric', month: 'short', day: 'numeric' }));
     });
+
     //init chart
     this.initChart();
     console.log(this.sharedInput.getMessage());

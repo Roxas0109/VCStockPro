@@ -1,1 +1,12 @@
-<p>home works!</p>
+<h1 *ngIf="!showCharts">Welcome to StockPro! Search a stock and add your quote here!</h1>
+<h1 *ngIf="showCharts">Saved Quotes</h1>
+<div class="chartContainer" *ngIf="showCharts">
+  <div class="listChart" *ngFor="let ch of charts">
+    <button [ngClass]="removeBtn" (click)="removeQuote(ch.symbol)">
+      <i class="fas fa-minus"></i> Remove
+    </button>
+    <h2>{{ch.symbol}}</h2>
+    <chart [type]="ch.type" [data]="ch.data" [options]="ch.options"></chart>
+  </div>
+
+</div>

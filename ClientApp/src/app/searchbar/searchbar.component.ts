@@ -38,7 +38,7 @@ export class SearchbarComponent implements OnInit {
     ).subscribe((value) => {
       //if input value is empty dont call api
       if (value != "") {
-        this.getAutoComplete(value)
+        //this.getAutoComplete(value)
       }
     });
   }
