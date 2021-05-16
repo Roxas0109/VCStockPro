@@ -10,7 +10,11 @@
 }
 
 #crypto-data{
-    margin-top:40px;
+  margin-top:40px;
 }
 
-
+#investment-header {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  text-decoration: underline;
+}

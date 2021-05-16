@@ -59,4 +59,14 @@ export class StocksAPIService {
       }
     });
   }
+
+  getStockHistory(symbol: string) {
+    return fetch(`https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v3/get-historical-data?symbol=${symbol}&region=US`, {
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-key": this.key,
+        "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
+      }
+    });
+  }
 }
