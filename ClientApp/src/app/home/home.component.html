@@ -1,4 +1,5 @@
-<h1 *ngIf="!showCharts">Welcome to StockPro! Search a stock and add your quote here!</h1>
+<h1>Welcome to StockPro!</h1>
+<h1 *ngIf="!showCharts">Search for a stock and add it to your home page.</h1>
 <h1 *ngIf="showCharts">Saved Quotes</h1>
 <div class="chartContainer" *ngIf="showCharts">
   <div class="listChart" *ngFor="let ch of charts">
